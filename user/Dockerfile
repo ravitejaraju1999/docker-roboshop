@@ -1,10 +1,16 @@
-from node:20
-workdir /opt/app
-expose 8080
-copy package.json .
-copy *.js .
-run npm install
-env MONGO='true' \
-    redis_url="redis://redis:6379" \
-    mongo_url="mongodb://mongodb:27017/users"
-cmd ["node", "server.js"]
+FROM node:20
+
+WORKDIR /opt/app
+
+EXPOSE 8080
+
+COPY package.json .
+COPY *.js .
+
+RUN npm install
+
+ENV MONGO=true \
+    REDIS_URL="redis://redis:6379" \
+    MONGO_URL="mongodb://mongodb:27017/users"
+
+CMD ["node", "server.js"]
