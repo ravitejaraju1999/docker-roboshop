@@ -1,0 +1,12 @@
+from maven:3.9.11
+expose 8080
+workdir /opt/app
+copy pom.xml .
+copy src .
+run mv target/shipping-1.0.jar shipping.jar
+env CART_ENDPOINT="cart:8080" \
+    DB_HOST="mysql"
+cmd ["java", "-jar", "shipping.jar"]
+
+
+
