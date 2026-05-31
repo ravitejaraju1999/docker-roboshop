@@ -1,0 +1,11 @@
+services:
+  mongodb:
+    image: mongodb:v1
+
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false #if true if you setup it manually then it will use that network otherwise it will create a new one with the name roboshop
+    
